@@ -31,6 +31,38 @@ int cardSum[N_MAX_USER];					//sum of the cards
 int bet[N_MAX_USER];						//current betting 
 int gameEnd = 0; 							//game end flag
 
+//some utility functions
+
+//get an integer input from standard input (keyboard)
+	int n_user;
+	
+		while(1){
+		
+		printf("Input the number of players (MAX : 5) : ");
+		scanf("%d", &n_user);
+		
+			if(n_user>5||n_user<0){
+				printf("it's impossible'!\n");
+			}
+			else{
+				printf("-->card is mixed and put into the tray");
+				break;
+			}
+			}
+
+//return : input integer value
+//         (-1 is returned if keyboard input was not integer)
+int getIntegerInput(void) {
+    int input, num;
+    
+    num = scanf("%d", &input);
+    fflush(stdin);
+    if (num != 1) //if it fails to get integer
+        input = -1;
+    
+    return input;
+}
+
 
 //card processing functions ---------------
 
