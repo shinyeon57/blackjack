@@ -41,14 +41,19 @@ int gameEnd = 0; 							//game end flag
 		printf("Input the number of players (MAX : 5) : ");
 		scanf("%d", &n_user);
 		
-			if(n_user>5||n_user<0){
-				printf("it's impossible'!\n");
+			if(n_user<0){
+				printf("it's impossible!(%d)\n", n_user);
+				continue;
 			}
-			else{
+			if(n_user>5){
+				printf("TOOOOOO MANY!\n");
+				continue;
+			}
+			if{
 				printf("-->card is mixed and put into the tray");
 				break;
-			}
-			}
+			}	
+		}
 
 //return : input integer value
 //         (-1 is returned if keyboard input was not integer)
