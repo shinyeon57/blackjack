@@ -1,5 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
+#include <string.h>
 
 #define N_CARDSET			1
 #define N_CARD				52
@@ -45,11 +47,11 @@ int gameEnd = 0; 							//game end flag
 				printf("it's impossible!(%d)\n", n_user);
 				continue;
 			}
-			if(n_user>5){
+			else if(n_user>5){
 				printf("TOOOOOO MANY!\n");
 				continue;
 			}
-			if{
+			else{
 				printf("-->card is mixed and put into the tray");
 				break;
 			}	
@@ -103,6 +105,29 @@ int configUser(void) {
 
 //betting
 int betDollar(void) {
+	
+	int dollar;
+	srand(time(NULL));
+	
+	while(1)
+	{
+		printf("-> your betting (total:$50) : ");
+		scanf("%d", &dollar); 
+		
+		if (dollar > 50) //50이아니라가지고있는 값 
+		{
+			printf("you only have $50! bet again\n");//50달러 자리에 현재 가지고 있는 값 입력.
+			continue;
+		}
+		 else (dollar <= 50); //가지고있는 값 
+		{
+			printf("-> player1 bets $%d (out of $50)\n", rand()%50);//rand를 N_Max_Bet로 나눠줘야하는듯,,,,,,,  
+			printf("-> player2 bets $%d (out of $50)\n", rand()%50);
+			//입력한수대로player 수를 출력해내야됨 어떻게 해야할까?;;ㅎㅎㅎㅎㅎㅎㅎ 
+			printf("----------------------------");
+			break;
+		}	
+	}
 	
 }
 
