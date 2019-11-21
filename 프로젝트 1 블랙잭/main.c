@@ -157,9 +157,9 @@ int betDollar(void) {
 		printf("-> your betting (total:$%d) : ", N_Max_Bet);
 		scanf("%d", &dollar); 
 
-			if (dollar > N_Max_Bet) //50이아니라가지고있는 값 
+			if (dollar > N_Max_Bet)  
       	{
-         	printf("you only have $%d! bet again\n", N_Max_Bet);//50달러 자리에 현재 가지고 있는 값 입력.
+         	printf("you only have $%d! bet again\n", N_Max_Bet);
          	continue;
       	}
       		else (dollar <= N_Max_Bet);  
@@ -199,27 +199,30 @@ void printCardInitialStatus(void) {
 int getAction(void) {
 	
 	char c;
-	printf("::: Action? (0- go, others - stay)\n")
-	scanf("")
+	printf("::: Action? (0- go, others - stay)\n");
+	scanf("%c", &c);
 	
 	if(c=='0')
 	{
-		continue;
+		
 	}	
 	else
 	{
-		break;
+		
 	}
 }
 
 
 void printUserCardStatus(int user, int cardcnt) {
 	int i;
+	char c; //shape
+	
 	
 	printf("   -> card : ");
 	for (i=0;i<cardcnt;i++)
 		printCard(cardhold[user][i]);
 	printf("\t ::: ");
+	scanf("%c%d", &c, &d)
 }
 
 
@@ -254,7 +257,7 @@ int main(int argc, char *argv[]) {
       //set the number of players
       configUser();
       printf("---------------------------\n");
-      printf("--------ROUND %d (cardIndex: %d)-----------", roundIndex+1, roundIndex);
+      printf("--------ROUND %d (cardIndex: %d)-----------", roundIndex, cardindex);
       roundIndex++;
       printf("---------------------------\n");
 }
@@ -291,6 +294,7 @@ int main(int argc, char *argv[]) {
 		}
 		
 		//result
+		printf("-------------------- ROUND %d result ....", roundIndex);
 		checkResult();
 	} while (gameEnd == 0);
 	
@@ -299,3 +303,4 @@ int main(int argc, char *argv[]) {
 	
 	return 0;
 }
+//교수님, 내년에다시뵈어요,,,,,,,,,,ㅜㅜㅜㅜㅜㅜㅜㅜㅜㅜㅜㅜㅜ 
