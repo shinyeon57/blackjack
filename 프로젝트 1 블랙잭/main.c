@@ -154,7 +154,7 @@ int betDollar(void) {
 	while(1)
 	{	
 		printf("--------BETTING STEP--------\n");	
-		printf("-> your betting (total:$50) : ");
+		printf("-> your betting (total:$%d) : ", N_Max_Bet);
 		scanf("%d", &dollar); 
 
 			if (dollar > N_Max_Bet) //50이아니라가지고있는 값 
@@ -198,6 +198,18 @@ void printCardInitialStatus(void) {
 
 int getAction(void) {
 	
+	char c;
+	printf("::: Action? (0- go, others - stay)\n")
+	scanf("")
+	
+	if(c=='0')
+	{
+		continue;
+	}	
+	else
+	{
+		break;
+	}
 }
 
 
@@ -242,7 +254,7 @@ int main(int argc, char *argv[]) {
       //set the number of players
       configUser();
       printf("---------------------------\n");
-      printf("--------ROUND %d (cardIndex: %d)-----------", roundIndex, );
+      printf("--------ROUND %d (cardIndex: %d)-----------", roundIndex+1, roundIndex);
       roundIndex++;
       printf("---------------------------\n");
 }
