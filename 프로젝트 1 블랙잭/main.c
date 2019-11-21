@@ -79,9 +79,8 @@ int mixCardTray(void) {
    int CardTray;
    int i,j,k; 	
    
-   srand(time(NULL));
-   
-   int pattern;
+   srand((unsigned)time(NULL));
+
 	 
    for(i=0;i<52;i++){					//mix the card
       N_CARD[i]=(rand()%52)+1;
@@ -102,7 +101,6 @@ int mixCardTray(void) {
    return CardTray;
 }
 
-}
 
 //get one card from the tray
 int pullCard(void) {
@@ -212,11 +210,20 @@ int getAction(void) {
 	}
 }
 
-
+char *Get_pattern(int pattern) //CARD PATTERN
+{
+	if(pattern == 0)
+		return "DIA";
+	else if(patern == 1)
+		return "HRT"
+	else if(patern == 2)
+		return "CLV"
+	else (patern == 3)
+		return "SPD"
+}
 void printUserCardStatus(int user, int cardcnt) {
 	int i;
-	char c; //shape
-	
+	char pattern; //0=DIA, 1=HRT, 2= CLV, 3=SPD
 	
 	printf("   -> card : ");
 	for (i=0;i<cardcnt;i++)
@@ -303,4 +310,4 @@ int main(int argc, char *argv[]) {
 	
 	return 0;
 }
-//교수님, 내년에다시뵈어요,,,,,,,,,,ㅜㅜㅜㅜㅜㅜㅜㅜㅜㅜㅜㅜㅜ 
+//교수님, 내년에다시뵐게요,,,,,,,,,,ㅜㅜㅜㅜㅜㅜㅜㅜㅜㅜㅜㅜㅜ 
