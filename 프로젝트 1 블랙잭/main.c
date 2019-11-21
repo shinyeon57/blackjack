@@ -36,6 +36,91 @@ int gameEnd = 0; 							//game end flag
 //some utility functions
 
 //get an integer input from standard input (keyboard)
+
+
+//return : input integer value
+//         (-1 is returned if keyboard input was not integer)
+int getIntegerInput(void) {
+    int input, num;
+    
+    num = scanf("%d", &input);
+    fflush(stdin);
+    if (num != 1) //if it fails to get integer
+        input = -1;
+    
+    return input;
+}
+
+
+//card processing functions ---------------
+
+//calculate the actual card number in the blackjack game
+int getCardNum(int cardnum) { 	
+}
+
+//print the card information (e.g. DiaA)
+void printCard(int cardnum) {
+	
+}
+
+
+//card array controllers -------------------------------
+
+//mix the card sets and put in the array
+int mixCardTray(void) {
+	
+	int N_CARDSET={NULL};
+   	char CARD[N_CARD]=					//HRT, CLV, DIA, SPD
+   {1,2,3,4,5,6,7,8,9,10,10,10,10,
+   	1,2,3,4,5,6,7,8,9,10,10,10,10,
+   	1,2,3,4,5,6,7,8,9,10,10,10,10,
+   	1,2,3,4,5,6,7,8,9,10,10,10,10};
+   
+   int CardTray;
+   int i,j,k; 	
+   
+   srand(time(NULL));
+   
+   int pattern;
+	 
+   for(i=0;i<52;i++){					//mix the card
+      N_CARD[i]=(rand()%52)+1;
+      
+      for(j=0;j<i;j++)
+      {
+         if(N_CARD[j] == N_CARD[i])
+         { i--;
+          break;
+          }
+      }
+   }
+
+   
+   N_CARDSET=N_CARD;
+   CardTray=N_CARDSET;
+ 
+   return CardTray;
+}
+
+}
+
+//get one card from the tray
+int pullCard(void) {
+	
+	int a;	
+   
+	srand((unsigned)time(NULL));
+	a=rand()%N_CARD;
+   
+   return a;
+}
+
+
+//playing game functions -----------------------------
+
+//player settiing
+int configUser(void) {
+	
 	int n_user;
 	
 		while(1){
@@ -56,49 +141,6 @@ int gameEnd = 0; 							//game end flag
 				break;
 			}	
 		}
-
-//return : input integer value
-//         (-1 is returned if keyboard input was not integer)
-int getIntegerInput(void) {
-    int input, num;
-    
-    num = scanf("%d", &input);
-    fflush(stdin);
-    if (num != 1) //if it fails to get integer
-        input = -1;
-    
-    return input;
-}
-
-
-//card processing functions ---------------
-
-//calculate the actual card number in the blackjack game
-int getCardNum(int cardnum) {
-}
-
-//print the card information (e.g. DiaA)
-void printCard(int cardnum) {
-	
-}
-
-
-//card array controllers -------------------------------
-
-//mix the card sets and put in the array
-int mixCardTray(void) {
-
-}
-
-//get one card from the tray
-int pullCard(void) {
-}
-
-
-//playing game functions -----------------------------
-
-//player settiing
-int configUser(void) {
 	
 }
 
@@ -106,29 +148,29 @@ int configUser(void) {
 //betting
 int betDollar(void) {
 	
-	int dollar;
-	srand(time(NULL));
-	
+	int dollar, i, N_Max_Bet;
+   	srand(time(NULL));
+
 	while(1)
-	{
+	{	
+		printf("--------BETTING STEP--------\n");	
 		printf("-> your betting (total:$50) : ");
 		scanf("%d", &dollar); 
-		
-		if (dollar > 50) //50이아니라가지고있는 값 
-		{
-			printf("you only have $50! bet again\n");//50달러 자리에 현재 가지고 있는 값 입력.
-			continue;
-		}
-		 else (dollar <= 50); //가지고있는 값 
-		{
-			printf("-> player1 bets $%d (out of $50)\n", rand()%50);//rand를 N_Max_Bet로 나눠줘야하는듯,,,,,,,  
-			printf("-> player2 bets $%d (out of $50)\n", rand()%50);
-			//입력한수대로player 수를 출력해내야됨 어떻게 해야할까?;;ㅎㅎㅎㅎㅎㅎㅎ 
-			printf("----------------------------");
-			break;
-		}	
-	}
-	
+
+			if (dollar > N_Max_Bet) //50이아니라가지고있는 값 
+      	{
+         	printf("you only have $%d! bet again\n", N_Max_Bet);//50달러 자리에 현재 가지고 있는 값 입력.
+         	continue;
+      	}
+      		else (dollar <= N_Max_Bet);  
+      	{
+         		for(i=0;i<n_user;i++)
+            	printf("-> player%d bets $%d (out of $50)\n", i, rand()%N_Max_Bet);
+         		printf("----------------------------\n");
+         		break;
+      	}   
+   }
+
 }
 
 
@@ -150,6 +192,7 @@ void offerCards(void) {
 
 //print initial card status
 void printCardInitialStatus(void) {
+	
 	
 }
 
@@ -177,6 +220,7 @@ int calcStepResult() {
 
 int checkResult() {
 	
+	
 }
 
 int checkWinner() {
@@ -189,11 +233,19 @@ int main(int argc, char *argv[]) {
 	int roundIndex = 0;
 	int max_user;
 	int i;
+	char CARD[N_CARD];
 	
 	srand((unsigned)time(NULL));
 	
-	//set the number of players
-	configUser();
+	while(1)
+   {
+      //set the number of players
+      configUser();
+      printf("---------------------------\n");
+      printf("--------ROUND %d (cardIndex: %d)-----------", roundIndex, );
+      roundIndex++;
+      printf("---------------------------\n");
+}
 
 
 	//Game initialization --------
@@ -211,6 +263,7 @@ int main(int argc, char *argv[]) {
 		offerCards(); //1. give cards to all the players
 		
 		printCardInitialStatus();
+		
 		printf("\n------------------ GAME start --------------------------\n");
 		
 		//each player's turn
